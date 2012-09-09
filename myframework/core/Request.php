@@ -17,6 +17,7 @@ class Request
             return $_GET[$name];
         }
         return $default;
+        
     }
     
     public function getPost($name, $default = null)
