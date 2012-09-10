@@ -99,7 +99,6 @@ abstract class Application
                 throw new HttpNotFoundException('No route found for ' . $this->request->getPathInfo());
 
             }
-
             $controller = $params['controller'];
             $action = $params['action'];
 

@@ -49,6 +49,7 @@ class Request
         return $_SERVER['REQUEST_URI'];
     }
 
+    // あああ
     public function getBaseUrl()
     {
         $script_name = $_SERVER['SCRIPT_NAME'];
