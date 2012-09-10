@@ -55,9 +55,9 @@ abstract class Controller
     protected function render($variables = array(), $template = null, $layout = 'layout')
     {
         $defaults = array(
-            'request' = $this->request,
-            'base_url' = $this->request->getBaseUrl(),
-            'session' = $this->session,
+            'request' => $this->request,
+            'base_url' => $this->request->getBaseUrl(),
+            'session' => $this->session,
         );
 
         $view = new View($this->application->getViewDir(), $defaults);
@@ -79,7 +79,7 @@ abstract class Controller
 
     protected function redirect($url)
     {
-        if (!preg_match('#https?://#', $url){
+        if (!preg_match('#https?://#', $url)){
             $protocol = $this->request->isSsl() ? 'https://' : 'http://';
             $host = $this->request->getHost();
             $base_url = $this->request->getBaseUrl();

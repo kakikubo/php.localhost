@@ -53,7 +53,7 @@ class Request
     {
         $script_name = $_SERVER['SCRIPT_NAME'];
 
-        $return_uri = $this->getRequestUri();
+        $request_uri = $this->getRequestUri();
 
         if (0 === strpos($request_uri, $script_name)){
             return $script_name;

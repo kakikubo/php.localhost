@@ -94,7 +94,7 @@ abstract class Application
         try {
 
             $params = $this->router->resolve($this->request->getPathInfo());
-            if ($param === false) {
+            if ($params === false) {
                 // TODO-A
                 throw new HttpNotFoundException('No route found for ' . $this->request->getPathInfo());
 
@@ -147,7 +147,7 @@ abstract class Application
     protected function render404page($e)
     {
         $this->response->setStatusCode(404, 'Not Found');
-        $message = $this->DebugMode() ? $e->getMessage() : 'Page not found.';
+        $message = $this->isDebugMode() ? $e->getMessage() : 'Page not found.';
         $message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
 
         $this->response->setContent(<<<EOF
