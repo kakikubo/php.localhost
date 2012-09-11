@@ -8,7 +8,7 @@ class StatusRepository extends DbRepository
 
         $sql = "
         INSERT INTO status(user_id, body, created_at)
-        VALUES(:userid, :body, :created_at)
+        VALUES(:user_id, :body, :created_at)
         ";
 
         $stmt = $this->execute($sql, array(
@@ -23,12 +23,12 @@ class StatusRepository extends DbRepository
         $sql = "
         SELECT s.*, u.user_name
         FROM status s
-        LEFT JOIN user u ON s.user_id = u.id
+        LEFT JOIN user u ON u.id = s.user_id
         WHERE u.id = :user_id
         ORDER BY s.created_at DESC
         ";
 
-        $stmt = $this->fetchAll($sql, array(':user_id' => $user_id));
+        return $this->fetchAll($sql, array(':user_id' => $user_id));
     }
 
     public function fetchAllByUserId($user_id)
