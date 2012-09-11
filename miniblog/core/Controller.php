@@ -80,11 +80,11 @@ abstract class Controller
     protected function redirect($url)
     {
         if (!preg_match('#https?://#', $url)){
-            $protocol = $this->request->isSsl() ? 'https://' : 'http://';
-            $host = $this->request->getHost();
-            $base_url = $this->request->getBaseUrl();
+        $protocol = $this->request->isSsl() ? 'https://' : 'http://';
+        $host = $this->request->getHost();
+        $base_url = $this->request->getBaseUrl();
 
-            $url = $protocol . $host . $base_url . $url;
+        $url = $protocol . $host . $base_url . $url;
         }
         $this->response->setStatusCode(302, 'Found');
         $this->response->setHttpHeader('Location', $url);
