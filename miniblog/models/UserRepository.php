@@ -5,7 +5,7 @@ class UserRepository extends DbRepository
     public function insert($user_name, $password)
     {
         $password = $this->hashPassword($password);
-        $now = new DateTime();
+        $now = new DateTime(); // php.iniに date.timezone = Asia/Tokyo をセットしないとダメ
 
         $sql = "
         INSERT INTO user(user_name, password, created_at)

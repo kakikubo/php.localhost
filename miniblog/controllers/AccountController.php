@@ -21,7 +21,7 @@ class AccountController extends Controller
         // CSRFトークンのチェック
         $token = $this->request->getPost('_token');
         if (!$this->checkCsrfToken('account/signup', $token)){
-            return $this->redirect('account/signup');
+            return $this->redirect('/account/signup');
         }
 
         $user_name = $this->request->getPost('user_name');
@@ -52,6 +52,7 @@ class AccountController extends Controller
 
             return $this->redirect('/');
         }
+
         return $this->render(array(
             'user_name' => $user_name,
             'password'  => $password, 
