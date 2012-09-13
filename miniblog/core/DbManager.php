@@ -6,6 +6,18 @@ class DbManager
     protected $repository_connection_map = array();
     protected $repositories = array();
 
+    // p.420 のマジックメソッドを実装(__isset(),__unset())
+    public function __isset($name)
+    {
+        return isset($this->repositories[$name]);
+    }
+
+    public function __unset($name)
+    {
+        unset($this->repositories[$name]);
+        // 削除されては困る場合は例外を投げるようにする
+        // throw new BadMethodCallException('__unset() is not supported');
+    }
 
     public function connect($name, $params)
     {
