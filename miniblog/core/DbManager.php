@@ -18,6 +18,16 @@ class DbManager
         // 削除されては困る場合は例外を投げるようにする
         // throw new BadMethodCallException('__unset() is not supported');
     }
+    // callメソッドを浸かって ->get('User')を->getUser()で行えるようにする
+    public function __call($method, $args)
+    {
+        if ('get' === substr($method, 0, 3)){
+            $name = substr($method, 3); // getUserならUserが返る
+
+            return $this->get($name);
+        }
+        throw new BadMethodCallException('Call to undefined method ' . $method);
+    }
 
     public function connect($name, $params)
     {
